@@ -55,6 +55,12 @@ for i in list(num_data.columns):
 #select categorical data
 cat_data=data_all.select_dtypes(['object'])
 
+##################################################################
+
+#Remove outliers
+
+##################################################################
+
 numerical_cols=num_data.columns.tolist()
 categorical_cols=cat_data.columns.tolist()
 
@@ -150,6 +156,7 @@ train_data.shape
 #missing value
 
 ######################################################
+
 (data_all[categorical_cols].isna().sum()/data_all.shape[0]).sort_values(ascending=False)[:25]
 
 for col in ('PoolQC', 'MiscFeature','Alley', 'Fence', 'FireplaceQu', 'MasVnrType', 'Utilities',
@@ -180,6 +187,7 @@ data_all['LotFrontage'] = data_all['LotFrontage'].fillna(data_all['LotFrontage']
 #Transfer to logarithmic form (Due to RMSE)
 
 ##################################################
+
 #draw Q-Q plot and histogram for 'SalePrice'
 from scipy import stats
 plt.figure(figsize=(10,5))
